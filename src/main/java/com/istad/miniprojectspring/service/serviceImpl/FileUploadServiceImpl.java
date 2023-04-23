@@ -15,7 +15,7 @@ import java.util.UUID;
 public class FileUploadServiceImpl implements FileUploadService {
     Path fileLocationStorage;
     FileUploadServiceImpl(){
-        fileLocationStorage = Paths.get("src/main/resources/images");
+        fileLocationStorage = Paths.get("src/main/resources/images/");
     }
     @Override
     public String uploadFile(MultipartFile file) throws IOException {
