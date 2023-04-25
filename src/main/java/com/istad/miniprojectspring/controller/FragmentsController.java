@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -35,6 +36,12 @@ public class FragmentsController {
         model.addAttribute("allUser",allUserService.getAllUser());
         return"allUsers";
     }
+    @GetMapping("/post/{postID}")
+    public String getPostByID(@PathVariable int postID , Model model){
+        model.addAttribute("allUser",allUserService.getAllUserByID(postID));
+        System.out.println(" Here is post " + postID);
+        return"viewPost";
+    }
     @GetMapping("/form")
     public String form(Model model){
         model.addAttribute("addNew",new UsersRes());
@@ -49,7 +56,7 @@ public class FragmentsController {
         }
         User newUsers = new User();
         try {
-            String filenames = "http://localhost:8080/images/" + fileUploadService.uploadFile(user.getFile());
+            String filenames = "http://localhost:8080/images/"+fileUploadService.uploadFile(user.getFile());
             System.out.println("Files name : " + filenames);
             newUsers.setImgpost(filenames);
         } catch (Exception ex) {

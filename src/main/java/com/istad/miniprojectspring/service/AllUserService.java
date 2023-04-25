@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AllUserService {
     List<AllUsers> getAllUser();
+    AllUsers getAllUserByID(int id);
 }

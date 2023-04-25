@@ -18,4 +18,9 @@ public class AllUsersServiceImpl implements AllUserService {
     public List<AllUsers> getAllUser() {
         return allUsersRepo.getAllUsersList();
     }
+
+    @Override
+    public AllUsers getAllUserByID(int id) {
+        return allUsersRepo.getAllUserByID(id);
+    }
 }
